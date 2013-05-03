@@ -16,34 +16,31 @@ public class MainActivity extends Activity {
     }
 
     public void onClick(View view) {
-        Intent i = new 
-                Intent("net.learn2develop.SecondActivity");
+        Intent i = new Intent("net.learn2develop.SecondActivity");
 
         //---use putExtra() to add new key/value pairs---            
-        i.putExtra("str1", "This is a string");
-        i.putExtra("age1", 25);
+        i.putExtra("str1", "Hi Tim");
+        i.putExtra("age1", 54);
         
-        //---use a Bundle object to add new key/values 
-        // pairs---  
+        //---use a Bundle object to add new key/values pairs---  
         Bundle extras = new Bundle();
-        extras.putString("str2", "This is another string");
-        extras.putInt("age2", 35);                
+        extras.putString("str2", "Hi from Bundle");
+        extras.putInt("age2", 52);                
 
         //---attach the Bundle object to the Intent object---
         i.putExtras(extras);                
         
         //---create my own custom object---
-        MyCustomClass myObject = new MyCustomClass();
-        myObject.setName("Wei-Meng Lee");
-        myObject.setEmail("weimenglee@learn2develop.net");
-        i.putExtra("MyObject", myObject);
-        
+//        MyCustomClass myObject = new MyCustomClass();
+//        myObject.setName("Wei-Meng Lee");
+//        myObject.setEmail("weimenglee@learn2develop.net");
+//        i.putExtra("MyObject", myObject);
+    
         //---start the activity to get a result back---
         startActivityForResult(i, 1);        
     }
     
-    public void onActivityResult(int requestCode, 
-            int resultCode, Intent data)
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         //---check if the request code is 1---
         if (requestCode == 1) {
@@ -52,14 +49,11 @@ public class MainActivity extends Activity {
             if (resultCode == RESULT_OK) {
 
                 //---get the result using getIntExtra()---
-                Toast.makeText(this, Integer.toString(
-                        data.getIntExtra("age3", 0)), 
-                        Toast.LENGTH_SHORT).show();      
+                Toast.makeText(this, Integer.toString(data.getIntExtra("age3", 0)), Toast.LENGTH_SHORT).show();      
 
                 //---get the result using getData()---
                 Uri url = data.getData();
-                Toast.makeText(this, url.toString(), 
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, url.toString(), Toast.LENGTH_SHORT).show();
             }            
         }
     }
